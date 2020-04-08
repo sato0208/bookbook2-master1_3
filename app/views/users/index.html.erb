@@ -1,0 +1,45 @@
+<%= render 'books/side', new_book: @new_book,user: @user_profire %>
+	<div class="col-xs-9">
+		<h2>Users</h2>
+		<table class="table">
+				<thead>
+					<tr>
+						<th>image</th>
+						<th>name</th>
+						<th colspan="3"></th>
+					</tr>
+				</thead>
+			<% @users.each do |user| %>
+				<tbody>
+					<tr>
+						<td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %></td>
+						<!-- タイトルにリンク付けする -->
+						<td><%= user.name %></td>
+						<td id="favorite-<%= user.id %>"></td>
+						<!-- bodyを表示 -->
+						<td>フォロー数:<%= link_to user.followings.count,following_user_path(user) %></td>
+						<td>フォロワー数:<%= link_to user.followers.count,follower_user_path(user) %></td>
+
+				<!-- フォロー、フォロワー -->
+				<td><% unless user.follows_by?(current_user) %>
+				       <% if current_user.following?(user) %>
+				         <%= form_for(current_user.relationships.find_by(follow_id: user.id), html: { method: :delete }) do |f| %>
+					            <%= hidden_field_tag :follow_id, user.id %>
+					            <%= f.submit 'フォローはずす', class: 'follow' %>
+				         <% end %>
+			        <% else %>
+				          <%= form_for(current_user.relationships.build) do |f| %>
+					            <%= hidden_field_tag :follow_id, user.id %>
+					            <%= f.submit 'フォローする', class: 'follow' %>
+				          <% end %>
+				        <% end %>
+			      <% end %></td>
+				<td><%= link_to "Show", user_path(user) %></td>
+				</tr>
+				</tbody>
+			<% end %>
+		</table>
+		<!-- book投稿一覧ここまで -->
+	</div>
+</div>
+</div>

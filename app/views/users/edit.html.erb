@@ -1,0 +1,42 @@
+      <div class="container">
+            <!-- エラーメッセージ-->
+        <% if @user.errors.any? %>
+          <div class="alert alert-danger">
+            <h4><%= @user.errors.count %>errors prohibited this obj from being saved:</h4>
+            <% @user.errors.full_messages.each do |message| %>
+              <%= message %>
+            <% end %>
+          </div>
+        <% end %>
+
+            <!-- ここからユーザ編集画面 -->
+        <section>
+            <h2 class="form-header-title">User info</h2>
+            <div class="form-body">
+            <%= form_for(@user)do |f| %>
+                <div class="form-group">
+                  <%= f.label :name %>
+                  <%= f.text_field :name, class:"user-edit-form",pracholder:"名前", maxlength:20 %>
+                </div>
+
+                <div class="form-group has-icon">
+                  <%= f.label :profile_image, "image" %>
+                  <!-- attachment_fieldにより画像選択用のボタンを表示させる -->
+                  <%= f.attachment_field :profile_image, placeholder:"プロフィール画像", id:"profile_icon" %>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :introduction %>
+                  <%= f.text_area :introduction, class:"user-edit-form",pracholder:"自己紹介文" %>
+                </div>
+
+                <div class="action-group">
+                  <%= f.submit "Update User" %>
+                </div>
+            <% end %>
+            </div>
+        </section>
+          <!-- ここまでユーザー編集画面 -->
+      </div>
+  </body>
+</html>

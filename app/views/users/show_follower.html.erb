@@ -1,0 +1,16 @@
+<h1>フォロー一覧</h1>
+	<table class="table">
+		<tr>
+			<th></th>
+			<th>名前</th>
+			<th></th>
+		</tr>
+	<% @user.followers.each do |user| %>
+		<tr>
+			<td>  <%= user.name %> </td>
+			<td><%= link_to '詳細', user_path(user) %></td>
+		</tr>
+	<% end %>
+
+	
+</table>

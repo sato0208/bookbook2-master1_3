@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bookbook2</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <div class="col-sm-12">
+
+        <span>Bookers</span>
+          <!-- ユーザーがサインインしている場合 -->
+          <% if user_signed_in? %>
+          <div id="nav">
+            <ul class="navbar-text navbar-right">
+              <li>
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <%= link_to "Home", user_path(current_user.id) %>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <%= link_to "Users", users_path %>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                <%= link_to 'Books', books_path %>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                <%= link_to "logout", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </div>
+            <!-- ユーザーがサインインしていない場合 -->
+            <% else %>
+            <div id="nav">
+            <ul class="navbar-text navbar-right">
+              <li>
+                <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                <%= link_to "Home", home_top_path %>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                <%= link_to "about", home_about_path %>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <%= link_to "sign up", new_user_registration_path %>
+              </li>
+              <li>
+                <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                <%= link_to "login", new_user_session_path %>
+              </li>
+            </ul>
+          </div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</header>
+
+<!-- update成功時にflash表示 -->
+  <% if flash.now[:notice] %>
+  <p><%= flash[:notice] %></p>
+  <% end %>
+  <!-- update成功flashここまで -->
+
+
+
+
+
+  <body>
+    <div class="container">
+        <div class="col-lg-8" style="background-color: orange;">
+          <%= yield %>
+        </div>
+  </div>
+  </body>
+</html>

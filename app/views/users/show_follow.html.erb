@@ -1,0 +1,15 @@
+<h1>フォロー一覧</h1>
+<table class="table">
+	<tr>
+		<th></th>
+		<th>名前</th>
+		<th></th>
+	</tr>
+	<% @user.followings.each do |user| %>
+	<tr>
+		<td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size:'40x40' %></td>
+		<td><%= user.name %> </td>
+		<td><%= link_to '詳細', user_path(user) %></td>
+	</tr>
+<% end %>
+</table>
