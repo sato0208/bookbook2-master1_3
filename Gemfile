@@ -78,3 +78,4 @@ gem 'hirb-unicode'
 gem 'jp_prefecture'
 gem 'geocoder'
 gem 'dotenv-rails'
+gem 'whenever', require: false
