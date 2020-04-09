@@ -8,7 +8,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		
   <% @messages.each do |m| %>
     <tr><td><strong><%= m.content %></strong></td>
     <td><small>by <strong><a href="/users/<%= m.user_id %>"><%= m.user.name %>さん</a></strong></small></td>

@@ -34,10 +34,11 @@ def show
   @user_books = User.find(params[:id]).books
   @new_book = Book.new
   @user_profire = current_user
-
-  @currentUserEntry=Entry.where(user_id: current_user.id)
-    @userEntry=Entry.where(user_id: @user.id)
-    if @user.id == current_user.id
+  # 自分
+  @currentUserEntry = Entry.where(user_id: current_user.id)
+  # 送り先
+  @userEntry = Entry.where(user_id: @user.id)
+  if @user.id == current_user.id
     else
       @currentUserEntry.each do |cu|
         @userEntry.each do |u|
