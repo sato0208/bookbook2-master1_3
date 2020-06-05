@@ -1,24 +1,21 @@
-# README
+# BOOKers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 検索機能
+### user,book切り替え可能
 
-Things you may want to cover:
+## イイね機能
 
-* Ruby version
+## コメント機能
 
-* System dependencies
+## チャット機能
 
-* Configuration
+## google MAP API
+### カレントユーザーの現在地情報取得、表示
 
-* Database creation
+## チャット機能
 
-* Database initialization
+## ログイン時に自動的にウェルカムメールを送る
+### gem whenever
+### Action Mailer
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 郵便番号から住所の自動入力
