@@ -1,7 +1,7 @@
 # BOOKers
 
 ### 検索機能
-#### user,book切り替え可能
+- user,book切り替え可能
 
 ### イイね機能
 
@@ -10,12 +10,12 @@
 ### チャット機能
 
 ### google MAP API
-#### カレントユーザーの現在地情報取得、表示
+- カレントユーザーの現在地情報取得、表示
 
 ### チャット機能
 
 ### ログイン時に自動的にウェルカムメールを送る
-#### gem whenever
-#### Action Mailer
+- gem whenever
+- Action Mailer
 
 ### 郵便番号から住所の自動入力
